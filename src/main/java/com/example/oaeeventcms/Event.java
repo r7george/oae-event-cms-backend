@@ -1,9 +1,8 @@
 package com.example.oaeeventcms;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Event {
@@ -16,4 +15,83 @@ public class Event {
     private String time;
     private String date;
     private String location;
+    private String imageSrc;
+    private String imageAlt;
+    private String uniqueAlt;
+    private Boolean featuredEvent;
+    private Intro intro;
+    @ElementCollection(targetClass = Schedule.class)
+    private List<Schedule> schedule;
+    private Theme theme;
+
+    public Event(String name, String series, String time, String date, String location, String imageSrc, String imageAlt, String uniqueAlt, Boolean featuredEvent, Intro intro, List<Schedule> schedule, Theme theme) {
+        this.name = name;
+        this.series = series;
+        this.time = time;
+        this.date = date;
+        this.location = location;
+        this.imageSrc = imageSrc;
+        this.imageAlt = imageAlt;
+        this.uniqueAlt = uniqueAlt;
+        this.featuredEvent = featuredEvent;
+        this.intro = intro;
+        this.schedule = schedule;
+        this.theme = theme;
+    }
+
+    public Event() {
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSeries() {
+        return series;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public String getImageSrc() {
+        return imageSrc;
+    }
+
+    public String getImageAlt() {
+        return imageAlt;
+    }
+
+    public String getUniqueAlt() {
+        return uniqueAlt;
+    }
+
+    public Boolean getFeaturedEvent() {
+        return featuredEvent;
+    }
+
+    public Intro getIntro() {
+        return intro;
+    }
+
+    public List<Schedule> getSchedule() {
+        return schedule;
+    }
+
+    public Theme getTheme() {
+        return theme;
+    }
 }
