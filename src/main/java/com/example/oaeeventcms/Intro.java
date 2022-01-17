@@ -40,4 +40,20 @@ public class Intro {
     public String getQuoteCaption() {
         return quoteCaption;
     }
+
+    public void setHeading(String heading) {
+        this.heading = heading;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setQuote(String quote) {
+        this.quote = quote;
+    }
+
+    public void setQuoteCaption(String quoteCaption) {
+        this.quoteCaption = quoteCaption;
+    }
 }

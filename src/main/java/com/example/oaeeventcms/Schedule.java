@@ -45,4 +45,24 @@ public class Schedule {
     public String getAlternateDescription() {
         return alternateDescription;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setAlternateDescription(String alternateDescription) {
+        this.alternateDescription = alternateDescription;
+    }
 }

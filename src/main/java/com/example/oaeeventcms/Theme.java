@@ -30,4 +30,16 @@ public class Theme {
     public String getAccentColor() {
         return accentColor;
     }
+
+    public void setTemplateTheme(String templateTheme) {
+        this.templateTheme = templateTheme;
+    }
+
+    public void setPrimaryColor(String primaryColor) {
+        this.primaryColor = primaryColor;
+    }
+
+    public void setAccentColor(String accentColor) {
+        this.accentColor = accentColor;
+    }
 }

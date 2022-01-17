@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OaeEventCmsRepository extends JpaRepository<Event, String> {
     Event findEventByid(int id);
+    String deleteEventByid(int id);
 }

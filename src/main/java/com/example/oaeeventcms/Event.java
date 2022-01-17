@@ -94,4 +94,56 @@ public class Event {
     public Theme getTheme() {
         return theme;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSeries(String series) {
+        this.series = series;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setImageSrc(String imageSrc) {
+        this.imageSrc = imageSrc;
+    }
+
+    public void setImageAlt(String imageAlt) {
+        this.imageAlt = imageAlt;
+    }
+
+    public void setUniqueAlt(String uniqueAlt) {
+        this.uniqueAlt = uniqueAlt;
+    }
+
+    public void setFeaturedEvent(Boolean featuredEvent) {
+        this.featuredEvent = featuredEvent;
+    }
+
+    public void setIntro(Intro intro) {
+        this.intro = intro;
+    }
+
+    public void setSchedule(List<Schedule> schedule) {
+        this.schedule = schedule;
+    }
+
+    public void setTheme(Theme theme) {
+        this.theme = theme;
+    }
 }
