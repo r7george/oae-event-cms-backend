@@ -10,14 +10,21 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String series;
+    @Column(nullable = false)
     private String time;
+    @Column(nullable = false)
     private String date;
+    @Column(nullable = false)
     private String location;
+    @Column(nullable = false)
     private String imageSrc;
     private String imageAlt;
-    private String uniqueAlt;
+    private String uniqueURL;
+    @Column(nullable = false)
     private Boolean featuredEvent;
     private Intro intro;
     @ElementCollection(targetClass = Schedule.class)
@@ -25,7 +32,7 @@ public class Event {
     private List<Schedule> schedule;
     private Theme theme;
 
-    public Event(String name, String series, String time, String date, String location, String imageSrc, String imageAlt, String uniqueAlt, Boolean featuredEvent, Intro intro, List<Schedule> schedule, Theme theme) {
+    public Event(String name, String series, String time, String date, String location, String imageSrc, String imageAlt, String uniqueURL, Boolean featuredEvent, Intro intro, List<Schedule> schedule, Theme theme) {
         this.name = name;
         this.series = series;
         this.time = time;
@@ -33,7 +40,7 @@ public class Event {
         this.location = location;
         this.imageSrc = imageSrc;
         this.imageAlt = imageAlt;
-        this.uniqueAlt = uniqueAlt;
+        this.uniqueURL = uniqueURL;
         this.featuredEvent = featuredEvent;
         this.intro = intro;
         this.schedule = schedule;
@@ -76,8 +83,8 @@ public class Event {
         return imageAlt;
     }
 
-    public String getUniqueAlt() {
-        return uniqueAlt;
+    public String getUniqueURL() {
+        return uniqueURL;
     }
 
     public Boolean getFeaturedEvent() {
@@ -128,8 +135,8 @@ public class Event {
         this.imageAlt = imageAlt;
     }
 
-    public void setUniqueAlt(String uniqueAlt) {
-        this.uniqueAlt = uniqueAlt;
+    public void setUniqueAlt(String uniqueURL) {
+        this.uniqueURL = uniqueURL;
     }
 
     public void setFeaturedEvent(Boolean featuredEvent) {

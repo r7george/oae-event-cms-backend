@@ -6,6 +6,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Schedule {
 
+    @Column(nullable = false)
     private String name;
     private String title;
     private String author;

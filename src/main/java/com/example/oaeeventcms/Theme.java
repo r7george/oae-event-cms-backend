@@ -1,12 +1,16 @@
 package com.example.oaeeventcms;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
 public class Theme {
 
+    @Column(nullable = false)
     private String templateTheme;
+    @Column(nullable = false)
     private String primaryColor;
+    @Column(nullable = false)
     private String accentColor;
 
     public Theme(String templateTheme, String primaryColor, String accentColor) {

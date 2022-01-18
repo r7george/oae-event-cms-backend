@@ -6,8 +6,9 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Intro {
 
+    @Column(nullable = false)
     private String heading;
-    @Column(length = 2000)
+    @Column(length = 2000, nullable = false)
     private String content;
     @Column(length = 1000)
     private String quote;
