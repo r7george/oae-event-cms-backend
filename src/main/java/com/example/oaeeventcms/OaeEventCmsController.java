@@ -27,10 +27,10 @@ public class OaeEventCmsController {
     }
 
     // needs to be tested 18/1
+    //Put the id within the body for the update to work
     @PutMapping("/events/{id}")
     public ResponseEntity<String> updateEventById(@RequestBody Event event, @PathVariable String id) {
-        Event oldEvent = repository.findEventByid(Integer.parseInt(id));
-        repository.save(event);
+             repository.save(event);
         return ResponseEntity.status(HttpStatus.OK).body("Event has been updated");
     }
 
