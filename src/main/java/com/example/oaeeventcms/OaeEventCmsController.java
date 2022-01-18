@@ -1,11 +1,9 @@
 package com.example.oaeeventcms;
-
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -26,7 +24,6 @@ public class OaeEventCmsController {
         return ResponseEntity.status(HttpStatus.CREATED).body("Event added: " + event.getName());
     }
 
-    // needs to be tested 18/1
     //Put the id within the body for the update to work
     @PutMapping("/events/{id}")
     public ResponseEntity<String> updateEventById(@RequestBody Event event, @PathVariable String id) {
