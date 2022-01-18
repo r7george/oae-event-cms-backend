@@ -21,6 +21,7 @@ public class Event {
     private Boolean featuredEvent;
     private Intro intro;
     @ElementCollection(targetClass = Schedule.class)
+    @OrderColumn(name="order_id")
     private List<Schedule> schedule;
     private Theme theme;
 
