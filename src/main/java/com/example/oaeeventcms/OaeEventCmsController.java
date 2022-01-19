@@ -54,6 +54,7 @@ public class OaeEventCmsController {
             checkNullOrEmptyValue(event.getTheme().getTemplateTheme(), "templateTheme");
             checkNullOrEmptyValue(event.getTheme().getPrimaryColor(), "primaryColor");
             checkNullOrEmptyValue(event.getTheme().getAccentColor(), "accentColor");
+            checkNullOrEmptyValue(event.getTheme().getSubtitleColor(), "subtitleColor");
             for(int i = 0; i < event.getSchedule().size(); i++) {
                 checkNullOrEmptyValue(event.getSchedule().get(i).getName(), "scheduleName");
             }
