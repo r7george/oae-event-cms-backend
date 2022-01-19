@@ -19,16 +19,49 @@ public class OaeEventCmsController {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(repository.findAll());
         } catch(Exception e) {
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ArrayList<>());
         }
     }
 
+    public void checkNullOrEmptyValue(String value, String propertyName) {
+        if(value == null || value.equals("")){
+            throw new IllegalArgumentException("Event " + propertyName + " cannot be null");
+        }
+    }
+
+    public void checkNullOrEmptyValue(Object value, String propertyName) {
+        if(value == null){
+            throw new IllegalArgumentException("Event " + propertyName + " cannot be null");
+        }
+    }
+
+    // need to add more if statements to throw exceptions for better error handling
     @PostMapping("/events/add")
     public ResponseEntity<String> createEvent(@RequestBody Event event) {
         try {
+            checkNullOrEmptyValue(event.getName(), "name");
+            checkNullOrEmptyValue(event.getSeries(), "series");
+            checkNullOrEmptyValue(event.getTime(), "time");
+            checkNullOrEmptyValue(event.getDate(), "date");
+            checkNullOrEmptyValue(event.getLocation(), "location");
+            checkNullOrEmptyValue(event.getImageSrc(), "imageSrc");
+            checkNullOrEmptyValue(event.getFeaturedEvent(), "featuredEvent");
+            checkNullOrEmptyValue(event.getIntro().getHeading(), "heading");
+            checkNullOrEmptyValue(event.getIntro().getContent(), "content");
+            checkNullOrEmptyValue(event.getTheme().getTemplateTheme(), "templateTheme");
+            checkNullOrEmptyValue(event.getTheme().getPrimaryColor(), "primaryColor");
+            checkNullOrEmptyValue(event.getTheme().getAccentColor(), "accentColor");
+            for(int i = 0; i < event.getSchedule().size(); i++) {
+                checkNullOrEmptyValue(event.getSchedule().get(i).getName(), "scheduleName");
+            }
             repository.save(event);
             return ResponseEntity.status(HttpStatus.CREATED).body("Event added: " + event.getName());
+        } catch(IllegalArgumentException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error while trying to add new event: " + e.getMessage());
         } catch(Exception e) {
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error while trying to add new event");
         }
     }
@@ -40,6 +73,7 @@ public class OaeEventCmsController {
             repository.save(event);
             return ResponseEntity.status(HttpStatus.OK).body("Event has been updated");
         } catch(Exception e) {
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error while trying to update event with id " + event.getId());
         }
     }
@@ -49,6 +83,7 @@ public class OaeEventCmsController {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(repository.findEventByid(Integer.parseInt(id)));
         } catch(Exception e) {
+            e.printStackTrace();
             return ResponseEntity.status((HttpStatus.BAD_REQUEST)).body(null);
         }
     }
@@ -60,6 +95,7 @@ public class OaeEventCmsController {
             repository.deleteEventByid(Integer.parseInt(id));
             return ResponseEntity.status(HttpStatus.OK).body("Event with ID " + id + " has been deleted.");
         } catch(Exception e) {
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error while trying to delete event with id " + repository.getById(id).getId());
         }
     }
