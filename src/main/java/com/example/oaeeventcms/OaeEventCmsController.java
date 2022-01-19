@@ -36,28 +36,32 @@ public class OaeEventCmsController {
         }
     }
 
+    public void checkingEventValues(Event event) {
+        checkNullOrEmptyValue(event.getName(), "name");
+        checkNullOrEmptyValue(event.getSeries(), "series");
+        checkNullOrEmptyValue(event.getTime(), "time");
+        checkNullOrEmptyValue(event.getDate(), "date");
+        checkNullOrEmptyValue(event.getLocation(), "location");
+        checkNullOrEmptyValue(event.getImageSrc(), "imageSrc");
+        checkNullOrEmptyValue(event.getFeaturedEvent(), "featuredEvent");
+        for(int i = 0; i < event.getIntro().size(); i++) {
+            checkNullOrEmptyValue(event.getIntro().get(i).getHeading(), "heading");
+            checkNullOrEmptyValue(event.getIntro().get(i).getContent(), "content");
+        }
+        checkNullOrEmptyValue(event.getTheme().getTemplateTheme(), "templateTheme");
+        checkNullOrEmptyValue(event.getTheme().getPrimaryColor(), "primaryColor");
+        checkNullOrEmptyValue(event.getTheme().getAccentColor(), "accentColor");
+        checkNullOrEmptyValue(event.getTheme().getSubtitleColor(), "subtitleColor");
+        for(int i = 0; i < event.getSchedule().size(); i++) {
+            checkNullOrEmptyValue(event.getSchedule().get(i).getName(), "scheduleName");
+        }
+    }
+
     // need to add more if statements to throw exceptions for better error handling
     @PostMapping("/events/add")
     public ResponseEntity<String> createEvent(@RequestBody Event event) {
         try {
-            checkNullOrEmptyValue(event.getName(), "name");
-            checkNullOrEmptyValue(event.getSeries(), "series");
-            checkNullOrEmptyValue(event.getTime(), "time");
-            checkNullOrEmptyValue(event.getDate(), "date");
-            checkNullOrEmptyValue(event.getLocation(), "location");
-            checkNullOrEmptyValue(event.getImageSrc(), "imageSrc");
-            checkNullOrEmptyValue(event.getFeaturedEvent(), "featuredEvent");
-            for(int i = 0; i < event.getIntro().size(); i++) {
-                checkNullOrEmptyValue(event.getIntro().get(i).getHeading(), "heading");
-                checkNullOrEmptyValue(event.getIntro().get(i).getContent(), "content");
-            }
-            checkNullOrEmptyValue(event.getTheme().getTemplateTheme(), "templateTheme");
-            checkNullOrEmptyValue(event.getTheme().getPrimaryColor(), "primaryColor");
-            checkNullOrEmptyValue(event.getTheme().getAccentColor(), "accentColor");
-            checkNullOrEmptyValue(event.getTheme().getSubtitleColor(), "subtitleColor");
-            for(int i = 0; i < event.getSchedule().size(); i++) {
-                checkNullOrEmptyValue(event.getSchedule().get(i).getName(), "scheduleName");
-            }
+            checkingEventValues(event);
             repository.save(event);
             return ResponseEntity.status(HttpStatus.CREATED).body("Event added: " + event.getName());
         } catch(IllegalArgumentException e) {
@@ -73,6 +77,7 @@ public class OaeEventCmsController {
     @PutMapping("/events/{id}")
     public ResponseEntity<String> updateEventById(@RequestBody Event event, @PathVariable String id) {
         try {
+            checkingEventValues(event);
             repository.save(event);
             return ResponseEntity.status(HttpStatus.OK).body("Event has been updated");
         } catch(Exception e) {
