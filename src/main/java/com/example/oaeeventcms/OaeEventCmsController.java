@@ -47,8 +47,10 @@ public class OaeEventCmsController {
             checkNullOrEmptyValue(event.getLocation(), "location");
             checkNullOrEmptyValue(event.getImageSrc(), "imageSrc");
             checkNullOrEmptyValue(event.getFeaturedEvent(), "featuredEvent");
-            checkNullOrEmptyValue(event.getIntro().getHeading(), "heading");
-            checkNullOrEmptyValue(event.getIntro().getContent(), "content");
+            for(int i = 0; i < event.getIntro().size(); i++) {
+                checkNullOrEmptyValue(event.getIntro().get(i).getHeading(), "heading");
+                checkNullOrEmptyValue(event.getIntro().get(i).getContent(), "content");
+            }
             checkNullOrEmptyValue(event.getTheme().getTemplateTheme(), "templateTheme");
             checkNullOrEmptyValue(event.getTheme().getPrimaryColor(), "primaryColor");
             checkNullOrEmptyValue(event.getTheme().getAccentColor(), "accentColor");

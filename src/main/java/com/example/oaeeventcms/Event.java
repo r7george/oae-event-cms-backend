@@ -26,13 +26,15 @@ public class Event {
     private String uniqueURL;
     @Column(nullable = false)
     private Boolean featuredEvent;
-    private Intro intro;
+    @ElementCollection(targetClass = Intro.class)
+    @OrderColumn(name="intro_id")
+    private List<Intro> intro;
     @ElementCollection(targetClass = Schedule.class)
     @OrderColumn(name="order_id")
     private List<Schedule> schedule;
     private Theme theme;
 
-    public Event(String name, String series, String time, String date, String location, String imageSrc, String imageAlt, String uniqueURL, Boolean featuredEvent, Intro intro, List<Schedule> schedule, Theme theme) {
+    public Event(String name, String series, String time, String date, String location, String imageSrc, String imageAlt, String uniqueURL, Boolean featuredEvent, List<Intro> intro, List<Schedule> schedule, Theme theme) {
         this.name = name;
         this.series = series;
         this.time = time;
@@ -91,7 +93,7 @@ public class Event {
         return featuredEvent;
     }
 
-    public Intro getIntro() {
+    public List<Intro> getIntro() {
         return intro;
     }
 
@@ -143,7 +145,7 @@ public class Event {
         this.featuredEvent = featuredEvent;
     }
 
-    public void setIntro(Intro intro) {
+    public void setIntro(List<Intro> intro) {
         this.intro = intro;
     }
 

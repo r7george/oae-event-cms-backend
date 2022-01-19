@@ -12,11 +12,14 @@ public class Theme {
     private String primaryColor;
     @Column(nullable = false)
     private String accentColor;
+    @Column(nullable = false)
+    private String subtitleColor;
 
-    public Theme(String templateTheme, String primaryColor, String accentColor) {
+    public Theme(String templateTheme, String primaryColor, String accentColor, String subtitleColor) {
         this.templateTheme = templateTheme;
         this.primaryColor = primaryColor;
         this.accentColor = accentColor;
+        this.subtitleColor = subtitleColor;
     }
 
     public Theme() {
@@ -35,6 +38,10 @@ public class Theme {
         return accentColor;
     }
 
+    public String getSubtitleColor() {
+        return subtitleColor;
+    }
+
     public void setTemplateTheme(String templateTheme) {
         this.templateTheme = templateTheme;
     }
@@ -45,5 +52,9 @@ public class Theme {
 
     public void setAccentColor(String accentColor) {
         this.accentColor = accentColor;
+    }
+
+    public void setSubtitleColor(String subtitleColor) {
+        this.subtitleColor = subtitleColor;
     }
 }
